@@ -31,7 +31,8 @@ def __checkDict(jsonObject, prefix):
 def __addField(ele, prefix):  
     l_out.append((prefix, ele))
 
-def browse_input_json(data):    
+def browse_input_json(data):
+    print(data)  
     #Iterating all the fields of the JSON  
     for element in data:
         #If Json Field value is a Nested Json

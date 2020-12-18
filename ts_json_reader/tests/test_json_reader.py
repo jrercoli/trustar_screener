@@ -34,4 +34,9 @@ def example_request_data():
     return d
 
 def test_required_output_json(example_input_data, example_request_data):
-    assert build_request_json(example_input_data, example_request_data) == {'guid': '1234', 'content.entities': ['1.2.3.4', 'wannacry', 'malware.com'], 'content.link.href': 'www.jr.com', 'score': 74, 'kill_chain_phases[1].phase_name': 'privilege-escalation' }
+    assert json_request.build_request_json(example_input_data, example_request_data) == {'guid': '1234', 'content.entities': ['1.2.3.4', 'wannacry', 'malware.com'], 'content.link.href': 'www.jr.com', 'score': 74, 'kill_chain_phases[1].phase_name': 'privilege-escalation' }
+
+def test_exception_not_json_input():
+    with pytest.raises(Exception) as e_info:
+        input_data = 2034.55
+        json_request.browse_input_json(input_data)
